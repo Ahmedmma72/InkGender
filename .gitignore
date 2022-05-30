@@ -2,4 +2,11 @@ Testing Data/
 Training Data/
 Testing Features/
 Training Features/
+Testing Algorithms/
+Small Test/
+Testing Results/
+Model/
 __pycache__/
+
+
+test_hinge.py

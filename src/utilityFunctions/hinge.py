@@ -4,32 +4,18 @@ import numpy as np
 
 
 # for hinge feature
-N_ANGLE_BINS = 40
-BIN_SIZE = 360 // N_ANGLE_BINS
 LEG_LENGTH = 25
-
-# for cold feature
-N_RHO_BINS = 7
 N_ANGLE_BINS = 12
-N_BINS = N_RHO_BINS * N_ANGLE_BINS
 BIN_SIZE = 360 // N_ANGLE_BINS
-R_INNER = 5.0
-R_OUTER = 35.0
-K_S = np.arange(3, 8)
-
-
-def get_contour_pixels(bw_image):
-    contours, _ = cv.findContours(
-        bw_image, cv.RETR_TREE,
-        cv.CHAIN_APPROX_NONE
-    )
-    contours = sorted(contours, key=cv.contourArea, reverse=True)[1:]
-    return contours
 
 
 def get_hinge_features(bw_img):
 
-    contours = get_contour_pixels(bw_img)
+    contours, _ = cv.findContours(
+        bw_img, cv.RETR_TREE,
+        cv.CHAIN_APPROX_NONE
+    )
+    contours = sorted(contours, key=cv.contourArea, reverse=True)[1:]
 
     hist = np.zeros((N_ANGLE_BINS, N_ANGLE_BINS))
 
